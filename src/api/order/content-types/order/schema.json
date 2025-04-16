@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "total_price": {
+      "type": "decimal"
+    },
+    "status_order": {
+      "type": "enumeration",
+      "enum": [
+        "noon"
+      ]
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "orders"
+    },
+    "payment": {
+      "type": "enumeration",
+      "enum": [
+        "Visa / PayPal"
+      ]
+    }
+  }
+}
