@@ -627,7 +627,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    related_products: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::product.product'
+    >;
     reviews: Schema.Attribute.Relation<'manyToMany', 'api::review.review'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
