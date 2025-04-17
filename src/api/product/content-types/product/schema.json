@@ -69,10 +69,20 @@
       "type": "biginteger"
     },
     "brand": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "sku": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "is_featured": {
       "type": "boolean"
@@ -87,22 +97,64 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::review.review",
-      "mappedBy": "products"
+      "mappedBy": "products",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "offer": {
       "type": "string",
       "default": "Hurry up only few lefts!",
-      "required": false
-    },
-    "material": {
-      "type": "string",
-      "required": false
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "material": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "badge": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "Best Seller",
+        "Special Discount"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "status_product": {
+      "type": "enumeration",
+      "enum": [
+        "Available",
+        "Not Available",
+        "Coming Soon"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Available"
     }
   }
 }
