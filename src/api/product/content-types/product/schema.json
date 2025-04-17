@@ -183,6 +183,16 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "mappedBy": "related_products"
+    },
+    "dimensions": {
+      "type": "component",
+      "component": "product.dimensions",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

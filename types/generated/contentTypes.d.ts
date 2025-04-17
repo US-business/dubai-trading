@@ -572,6 +572,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    dimensions: Schema.Attribute.Component<'product.dimensions', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     discount: Schema.Attribute.Decimal &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

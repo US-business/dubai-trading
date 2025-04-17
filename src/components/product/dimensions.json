@@ -1,0 +1,20 @@
+{
+    "collectionName": "components_product_dimensions",
+    "info": {
+      "displayName": "dimensions",
+      "icon": "arrows-alt",
+      "description": "Product dimensions"
+    },
+    "options": {},
+    "attributes": {
+      "length": {
+        "type": "decimal"
+      },
+      "width": {
+        "type": "decimal"
+      },
+      "height": {
+        "type": "decimal"
+      }
+    }
+  }
