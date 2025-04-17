@@ -18,27 +18,50 @@ jobs:
       - name: Clone repository
         uses: actions/checkout@v4
 
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Strapi
+        run: npm run build
+
+      - name: Create build directory for deployment
+        run: |
+          mkdir -p build
+          cp -r dist/* build/ || true
+          cp -r public build/ || true
+          # Copy additional files needed for production
+          cp package.json build/
+          
       - name: Install Deno
         uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
+      - name: Check build directory
+        run: ls -la build || (echo "Build directory is empty or doesn't exist" && mkdir -p build)
 
-      - name: Install step
-        run: "npm install"
-
-      - name: Build step
-        run: "npm run build"
+      - name: Create server file
+        run: |
+          echo 'import { serve } from "https://deno.land/std@0.217.0/http/server.ts";
+          import { serveDir } from "https://deno.land/std@0.217.0/http/file_server.ts";
+          
+          serve((req) => {
+            return serveDir(req, {
+              fsRoot: "./",
+            });
+          });' > build/server.js
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "us-business-dubai-tradi"
-          entrypoint: "https://deno.land/std@0.217.0/http/file_server.ts"
+          entrypoint: "server.js"
           root: "build"
           
           
