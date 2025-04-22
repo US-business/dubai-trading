@@ -1,6 +1,6 @@
 // server.js
-const strapi = require('@strapi/strapi');
-const app = strapi({ distDir: './dist' });
+const { createStrapi } = require('@strapi/strapi');
+const app = createStrapi({ distDir: './dist' });
 
 app.start();
 
