@@ -9,7 +9,7 @@
     "develop": "strapi develop",
     "start": "node server.js",
     "strapi": "strapi",
-    "vercel-build": "strapi build",
+    "vercel-build": "node deploy.js && strapi build",
     "postinstall": "npm run build"
   },
   "dependencies": {
