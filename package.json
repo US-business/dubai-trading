@@ -8,7 +8,9 @@
     "deploy": "strapi deploy",
     "develop": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "vercel-build": "strapi build",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.3",
