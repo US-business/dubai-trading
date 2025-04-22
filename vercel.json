@@ -16,11 +16,6 @@
     "DATABASE_CLIENT": "postgres",
     "HOSTNAME_ENABLED": "false"
   },
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 60
-    }
-  },
   "routes": [
     {
       "src": "/admin/(.*)",
