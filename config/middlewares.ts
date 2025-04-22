@@ -25,6 +25,12 @@ export default [
   'strapi::query',
   'strapi::body',
   'strapi::session',
-  'strapi::favicon',
+  {
+    name: 'strapi::favicon',
+    config: {
+      path: './public/favicon.png',
+      maxAge: 0 // This disables caching
+    }
+  },
   'strapi::public',
 ];
