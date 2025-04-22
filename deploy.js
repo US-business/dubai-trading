@@ -14,6 +14,7 @@ HOST=0.0.0.0
 PORT=1337
 NODE_ENV=production
 DATABASE_CLIENT=postgres
+HOSTNAME_ENABLED=false
 
 # Make sure to set these in Vercel environment variables
 # DATABASE_HOST=
@@ -28,7 +29,7 @@ DATABASE_CLIENT=postgres
 # JWT_SECRET=
 # TRANSFER_TOKEN_SALT=
 
-# Cloudinary
+# Cloudinary - Required for Vercel deployment
 # CLOUDINARY_NAME=
 # CLOUDINARY_KEY=
 # CLOUDINARY_SECRET=
@@ -44,6 +45,14 @@ if (!fs.existsSync(tmpDir)) {
   console.log('Creating .tmp directory...');
   fs.mkdirSync(tmpDir, { recursive: true });
   console.log('.tmp directory created');
+}
+
+// Make sure the public/uploads directory exists
+const uploadsDir = path.join(__dirname, 'public', 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  console.log('Creating public/uploads directory...');
+  fs.mkdirSync(uploadsDir, { recursive: true });
+  console.log('public/uploads directory created');
 }
 
 console.log('Deployment setup complete!'); 
