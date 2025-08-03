@@ -66,7 +66,8 @@
       }
     },
     "stock": {
-      "type": "biginteger"
+      "type": "integer",
+      "default": 0
     },
     "brand": {
       "type": "string",
@@ -80,7 +81,7 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -129,19 +130,6 @@
         }
       }
     },
-    "badge": {
-      "type": "enumeration",
-      "enum": [
-        "New",
-        "Best Seller",
-        "Special Discount"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
     "status_product": {
       "type": "enumeration",
       "enum": [
@@ -168,7 +156,7 @@
       "type": "json",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       }
     },
@@ -221,9 +209,26 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
-      }
+      },
+      "unique": true
+    },
+    "badge": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "new",
+        "best seller",
+        "special offer"
+      ],
+      "default": "none"
+    },
+    "coupon": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::coupon.coupon",
+      "inversedBy": "products"
     }
   }
 }
