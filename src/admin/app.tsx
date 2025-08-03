@@ -2,7 +2,6 @@ import type { StrapiApp } from '@strapi/strapi/admin';
 
 // Use custom favicon with a unique name to avoid caching issues
 import faviconPng from './extensions/favicon.png';
-import faviconIco from './extensions/favicon.ico';
 
 // Add a timestamp to prevent caching
 
@@ -87,6 +86,6 @@ export default {
     },
   },
   bootstrap(app: StrapiApp) {
-    console.log(app);
+    // Bootstrap function
   },
 };

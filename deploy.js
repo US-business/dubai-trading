@@ -4,11 +4,9 @@ const fs = require('fs');
 const path = require('path');
 
 // Ensure proper environment variables are available for Vercel deployment
-console.log('Starting deployment setup for Vercel...');
 
 // Create .env file for Vercel if it doesn't exist
 if (!fs.existsSync('.env')) {
-  console.log('Creating .env file for Vercel deployment...');
   const envTemplate = `
 HOST=0.0.0.0
 PORT=1337
@@ -36,23 +34,16 @@ HOSTNAME_ENABLED=false
 `;
   
   fs.writeFileSync('.env', envTemplate);
-  console.log('.env file created successfully');
 }
 
 // Make sure the tmp directory exists
 const tmpDir = path.join(__dirname, '.tmp');
 if (!fs.existsSync(tmpDir)) {
-  console.log('Creating .tmp directory...');
   fs.mkdirSync(tmpDir, { recursive: true });
-  console.log('.tmp directory created');
 }
 
 // Make sure the public/uploads directory exists
 const uploadsDir = path.join(__dirname, 'public', 'uploads');
 if (!fs.existsSync(uploadsDir)) {
-  console.log('Creating public/uploads directory...');
   fs.mkdirSync(uploadsDir, { recursive: true });
-  console.log('public/uploads directory created');
-}
-
-console.log('Deployment setup complete!'); 
+} 
